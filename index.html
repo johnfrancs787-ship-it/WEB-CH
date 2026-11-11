@@ -19,6 +19,7 @@
       --accent: #69e3bd;
       --accent-dark: #103c35;
       --danger: #ff9b9b;
+      --success: #8ef0c8;
       --radius: 18px;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
@@ -37,13 +38,9 @@
     }
 
     button, input, select { font: inherit; }
-
     button, a { -webkit-tap-highlight-color: transparent; }
-
     a { color: inherit; }
-
     .hidden { display: none !important; }
-
     .app-shell { min-height: 100vh; }
 
     .sidebar {
@@ -123,10 +120,7 @@
       font-size: 1rem;
     }
 
-    .sidebar-bottom {
-      margin-top: auto;
-      padding: 16px 8px 0;
-    }
+    .sidebar-bottom { margin-top: auto; padding: 16px 8px 0; }
 
     .support-mini {
       padding: 15px;
@@ -136,7 +130,6 @@
     }
 
     .support-mini p { margin: 6px 0 12px; color: var(--muted); font-size: .83rem; }
-
     .main-area { min-height: 100vh; margin-left: 270px; }
 
     .topbar {
@@ -155,7 +148,6 @@
     }
 
     .topbar-title { color: var(--muted); font-size: .9rem; }
-
     .topbar-actions { display: flex; align-items: center; gap: 10px; }
 
     .language-select, .button, .icon-button {
@@ -179,6 +171,8 @@
       cursor: pointer;
     }
 
+    .button:disabled { cursor: wait; opacity: .65; }
+
     .button-primary {
       border-color: transparent;
       color: #071711;
@@ -186,7 +180,6 @@
     }
 
     .button-primary:hover { filter: brightness(1.06); }
-
     .button-quiet { background: transparent; }
 
     .icon-button {
@@ -251,7 +244,6 @@
     }
 
     .hero-actions { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 24px; }
-
     .section { margin-top: 48px; scroll-margin-top: 100px; }
 
     .section-heading {
@@ -294,7 +286,6 @@
     }
 
     .card p { margin: 9px 0 16px; color: var(--muted); line-height: 1.65; }
-
     .text-link { color: var(--accent); font-weight: 750; text-decoration: none; }
     .text-link:hover { text-decoration: underline; }
 
@@ -309,7 +300,14 @@
       background: linear-gradient(120deg, rgba(16, 60, 53, .58), var(--surface));
     }
 
-    .phone-number { display: inline-block; margin-top: 8px; color: var(--accent); font-size: 1.45rem; font-weight: 850; text-decoration: none; }
+    .phone-number {
+      display: inline-block;
+      margin-top: 8px;
+      color: var(--accent);
+      font-size: 1.45rem;
+      font-weight: 850;
+      text-decoration: none;
+    }
 
     .notice {
       padding: 16px 18px;
@@ -339,10 +337,10 @@
 
     .auth-card h1 { margin: 8px 0; font-size: 2rem; letter-spacing: -.04em; }
     .auth-card > p { color: var(--muted); line-height: 1.6; }
-
     .form { display: grid; gap: 14px; margin-top: 22px; }
     .field { display: grid; gap: 7px; }
     .field label { font-size: .88rem; font-weight: 700; }
+
     .field input {
       width: 100%;
       min-height: 48px;
@@ -353,16 +351,48 @@
       color: var(--text);
       background: #0b1222;
     }
-    .field input:focus { border-color: var(--accent); }
 
+    .field input:focus { border-color: var(--accent); }
     .form .button { width: 100%; }
-    .divider { display: flex; align-items: center; gap: 12px; margin: 18px 0; color: #8491a8; font-size: .8rem; }
-    .divider::before, .divider::after { height: 1px; flex: 1; background: var(--line); content: ""; }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 18px 0;
+      color: #8491a8;
+      font-size: .8rem;
+    }
+
+    .divider::before, .divider::after {
+      height: 1px;
+      flex: 1;
+      background: var(--line);
+      content: "";
+    }
+
     .auth-switch { margin-top: 18px; color: var(--muted); text-align: center; font-size: .9rem; }
-    .auth-switch button { padding: 0; border: 0; color: var(--accent); background: none; font-weight: 750; cursor: pointer; }
-    .form-message { min-height: 1.2em; color: var(--danger); font-size: .86rem; }
+
+    .auth-switch button {
+      padding: 0;
+      border: 0;
+      color: var(--accent);
+      background: none;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .form-message {
+      min-height: 1.2em;
+      color: var(--danger);
+      font-size: .86rem;
+      line-height: 1.5;
+    }
+
+    .form-message.success { color: var(--success); }
 
     .profile-row { display: flex; align-items: center; gap: 14px; }
+
     .avatar {
       display: grid;
       width: 54px;
@@ -398,6 +428,7 @@
         transition: transform .22s ease;
         box-shadow: 25px 0 60px rgba(0, 0, 0, .35);
       }
+
       .sidebar.open { transform: translateX(0); }
       .main-area { margin-left: 0; }
       .icon-button { display: grid; }
@@ -411,7 +442,10 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
     }
   </style>
 </head>
@@ -444,7 +478,7 @@
 
     <div class="main-area">
       <header class="topbar">
-        <button class="icon-button" id="menuToggle" aria-label="Ouvrir le menu" aria-controls="sidebar" aria-expanded="false">☰</button>
+        <button class="icon-button" id="menuToggle" type="button" aria-label="Ouvrir le menu" aria-controls="sidebar" aria-expanded="false">☰</button>
         <div class="topbar-title" data-i18n="platform">Espace client MMS TRADE</div>
         <div class="topbar-actions">
           <label class="hidden" for="language">Langue</label>
@@ -454,7 +488,7 @@
             <option value="de">Deutsch</option>
             <option value="it">Italiano</option>
           </select>
-          <button class="button button-quiet" id="signOut" type="button" data-i18n="signIn">Connexion</button>
+          <button class="button button-quiet" id="signOut" type="button">Connexion</button>
         </div>
       </header>
 
@@ -479,18 +513,18 @@
             </form>
 
             <div class="divider" data-i18n="or">ou</div>
-            <button class="button button-quiet" id="googleButton" type="button" style="width:100%">Continuer avec Google</button>
+            <button class="button button-quiet" id="googleButton" type="button" style="width:100%">
+              Continuer avec Google
+            </button>
+
             <div class="auth-switch">
               <span id="switchPrompt">Pas encore de compte ?</span>
               <button type="button" id="switchMode">Créer un compte</button>
             </div>
-            <p class="notice" style="margin-top:20px" data-i18n="authNotice">
-              Démonstration d’interface : la connexion et Google doivent être reliés à un service d’authentification avant le lancement.
-            </p>
           </div>
         </section>
 
-        <div id="siteContent" class="content">
+        <div id="siteContent" class="content hidden">
           <section class="hero" id="home">
             <div class="eyebrow" data-i18n="heroEyebrow">Accompagnement · Formation · Support</div>
             <h1 data-i18n="heroTitle">Développez vos connaissances des marchés crypto.</h1>
@@ -514,8 +548,8 @@
               <div class="profile-row">
                 <div class="avatar" id="avatar">M</div>
                 <div>
-                  <h3 id="profileName" data-i18n="visitor">Visiteur</h3>
-                  <p class="muted" id="profileEmail" data-i18n="demoMode">Mode aperçu — connexion à configurer</p>
+                  <h3 id="profileName">Client</h3>
+                  <p class="muted" id="profileEmail">—</p>
                 </div>
               </div>
             </article>
@@ -604,7 +638,22 @@
     </div>
   </div>
 
-  <script>
+  <script type="module">
+    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+    // Remplace ces deux valeurs par celles de Supabase > Project Settings > API.
+    const SUPABASE_URL = "YOUR_SUPABASE_URL";
+    const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+
+    const configurationValide =
+      SUPABASE_URL.startsWith("https://") &&
+      !SUPABASE_URL.includes("YOUR_") &&
+      !SUPABASE_ANON_KEY.includes("YOUR_");
+
+    const supabase = configurationValide
+      ? createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+      : null;
+
     const translations = {
       fr: {
         menu:"Menu", profile:"Profil", myServices:"Mes services", clientServices:"Services client", contact:"Contact", settings:"Paramètres",
@@ -613,8 +662,8 @@
         heroEyebrow:"Accompagnement · Formation · Support", heroTitle:"Développez vos connaissances des marchés crypto.",
         heroCopy:"MMS TRADE vous accompagne avec des ressources pédagogiques et un service client dédié pour mieux comprendre l’investissement en cryptomonnaies, le trading et le minage.",
         exploreServices:"Découvrir les services", contactSupport:"Contacter le service client", profileTitle:"Votre espace client",
-        profileIntro:"Retrouvez vos informations et accédez aux services MMS TRADE.", visitor:"Visiteur", demoMode:"Mode aperçu — connexion à configurer",
-        servicesTitle:"Mes services", servicesIntro:"Choisissez un domaine pour découvrir nos formations et notre accompagnement.",
+        profileIntro:"Retrouvez vos informations et accédez aux services MMS TRADE.", visitor:"Client", servicesTitle:"Mes services",
+        servicesIntro:"Choisissez un domaine pour découvrir nos formations et notre accompagnement.",
         investmentTitle:"Investissement crypto", investmentCopy:"Contenus pédagogiques pour comprendre les actifs numériques, les plateformes et les risques associés.",
         tradingTitle:"Formation en trading", tradingCopy:"Initiation à l’analyse des marchés, aux ordres et aux principes de gestion du risque.",
         miningTitle:"Formation au minage", miningCopy:"Comprenez les équipements, les coûts énergétiques et les paramètres à étudier avant un projet de minage.",
@@ -628,10 +677,12 @@
         footerDisclaimer:"Les crypto-actifs comportent des risques. Aucun rendement n’est garanti.",
         authWelcome:"Bienvenue", authDescription:"Connectez-vous pour accéder à votre espace client.", login:"Se connecter",
         createAccount:"Créer un compte", switchPrompt:"Pas encore de compte ?", haveAccount:"Vous avez déjà un compte ?",
-        authNotice:"Démonstration d’interface : la connexion et Google doivent être reliés à un service d’authentification avant le lancement.",
-        demoAuth:"L’authentification n’est pas encore activée. Configurez un service sécurisé avant de créer des comptes.",
-        googleSetup:"La connexion Google doit être configurée avec un fournisseur d’authentification.",
-        passwordError:"Le mot de passe doit contenir au moins 8 caractères."
+        google:"Continuer avec Google", resetPassword:"Mot de passe oublié ?", passwordResetSent:"Si cette adresse correspond à un compte, un e-mail de réinitialisation va être envoyé.",
+        checkEmail:"Vérifiez votre boîte e-mail pour confirmer votre inscription.", configurationError:"La connexion à Supabase n’est pas configurée : ajoutez l’URL du projet et la clé anon dans le code.",
+        passwordError:"Le mot de passe doit contenir au moins 8 caractères.", invalidCredentials:"Adresse e-mail ou mot de passe incorrect.",
+        emailAlreadyRegistered:"Cette adresse e-mail est déjà utilisée.", genericAuthError:"Une erreur est survenue. Vérifiez les informations saisies et réessayez.",
+        signOutError:"La déconnexion a échoué. Réessayez.", googleError:"La connexion Google n’a pas pu démarrer. Vérifiez la configuration OAuth dans Supabase.",
+        loading:"Veuillez patienter…", accountCreated:"Compte créé. Consultez votre e-mail pour confirmer l’inscription."
       },
       en: {
         menu:"Menu", profile:"Profile", myServices:"My services", clientServices:"Client services", contact:"Contact", settings:"Settings",
@@ -640,8 +691,8 @@
         heroEyebrow:"Guidance · Training · Support", heroTitle:"Build your knowledge of crypto markets.",
         heroCopy:"MMS TRADE provides educational resources and dedicated client support to help you understand cryptocurrency investing, trading and mining.",
         exploreServices:"Explore services", contactSupport:"Contact client support", profileTitle:"Your client area",
-        profileIntro:"View your information and access MMS TRADE services.", visitor:"Visitor", demoMode:"Preview mode — authentication to be configured",
-        servicesTitle:"My services", servicesIntro:"Choose a topic to explore our training and guidance.",
+        profileIntro:"View your information and access MMS TRADE services.", visitor:"Client", servicesTitle:"My services",
+        servicesIntro:"Choose a topic to explore our training and guidance.",
         investmentTitle:"Crypto investing", investmentCopy:"Educational material to understand digital assets, platforms and related risks.",
         tradingTitle:"Trading training", tradingCopy:"An introduction to market analysis, orders and risk-management principles.",
         miningTitle:"Mining training", miningCopy:"Learn about equipment, energy costs and factors to assess before a mining project.",
@@ -655,10 +706,12 @@
         footerDisclaimer:"Crypto-assets involve risk. No returns are guaranteed.",
         authWelcome:"Welcome", authDescription:"Sign in to access your client area.", login:"Sign in",
         createAccount:"Create account", switchPrompt:"Don't have an account yet?", haveAccount:"Already have an account?",
-        authNotice:"Interface preview: email and Google sign-in must be connected to an authentication service before launch.",
-        demoAuth:"Authentication is not enabled yet. Configure a secure service before creating accounts.",
-        googleSetup:"Google sign-in must be configured with an authentication provider.",
-        passwordError:"Password must be at least 8 characters."
+        google:"Continue with Google", resetPassword:"Forgot password?", passwordResetSent:"If an account exists for this address, a password reset email will be sent.",
+        checkEmail:"Check your inbox to confirm your registration.", configurationError:"Supabase is not configured. Add your project URL and anon key in the code.",
+        passwordError:"Password must be at least 8 characters.", invalidCredentials:"Incorrect email address or password.",
+        emailAlreadyRegistered:"This email address is already registered.", genericAuthError:"An error occurred. Check your details and try again.",
+        signOutError:"Could not sign out. Please try again.", googleError:"Google sign-in could not start. Check OAuth settings in Supabase.",
+        loading:"Please wait…", accountCreated:"Account created. Check your email to confirm your registration."
       },
       de: {
         menu:"Menü", profile:"Profil", myServices:"Meine Services", clientServices:"Kundenservice", contact:"Kontakt", settings:"Einstellungen",
@@ -667,8 +720,8 @@
         heroEyebrow:"Begleitung · Schulung · Support", heroTitle:"Bauen Sie Ihr Wissen über Kryptomärkte aus.",
         heroCopy:"MMS TRADE bietet Lernmaterialien und einen eigenen Kundenservice, damit Sie Investitionen in Kryptowährungen, Trading und Mining besser verstehen.",
         exploreServices:"Services entdecken", contactSupport:"Kundenservice kontaktieren", profileTitle:"Ihr Kundenbereich",
-        profileIntro:"Sehen Sie Ihre Informationen ein und greifen Sie auf MMS-TRADE-Services zu.", visitor:"Besucher", demoMode:"Vorschau — Anmeldung muss eingerichtet werden",
-        servicesTitle:"Meine Services", servicesIntro:"Wählen Sie ein Thema, um unsere Schulungen und Begleitung kennenzulernen.",
+        profileIntro:"Sehen Sie Ihre Informationen ein und greifen Sie auf MMS-TRADE-Services zu.", visitor:"Kunde", servicesTitle:"Meine Services",
+        servicesIntro:"Wählen Sie ein Thema, um unsere Schulungen und Begleitung kennenzulernen.",
         investmentTitle:"Krypto-Investitionen", investmentCopy:"Lerninhalte zu digitalen Vermögenswerten, Plattformen und den damit verbundenen Risiken.",
         tradingTitle:"Trading-Schulung", tradingCopy:"Einführung in Marktanalyse, Orderarten und Grundsätze des Risikomanagements.",
         miningTitle:"Mining-Schulung", miningCopy:"Erfahren Sie mehr über Ausrüstung, Energiekosten und wichtige Faktoren für ein Mining-Projekt.",
@@ -682,10 +735,12 @@
         footerDisclaimer:"Krypto-Assets sind mit Risiken verbunden. Es gibt keine Renditegarantie.",
         authWelcome:"Willkommen", authDescription:"Melden Sie sich an, um Ihren Kundenbereich aufzurufen.", login:"Anmelden",
         createAccount:"Konto erstellen", switchPrompt:"Noch kein Konto?", haveAccount:"Sie haben bereits ein Konto?",
-        authNotice:"Interface-Vorschau: E-Mail- und Google-Anmeldung müssen vor dem Start mit einem Authentifizierungsdienst verbunden werden.",
-        demoAuth:"Die Anmeldung ist noch nicht aktiviert. Richten Sie vor der Kontoerstellung einen sicheren Dienst ein.",
-        googleSetup:"Die Google-Anmeldung muss mit einem Authentifizierungsanbieter eingerichtet werden.",
-        passwordError:"Das Passwort muss mindestens 8 Zeichen lang sein."
+        google:"Mit Google fortfahren", resetPassword:"Passwort vergessen?", passwordResetSent:"Falls ein Konto mit dieser Adresse besteht, wird eine E-Mail zum Zurücksetzen gesendet.",
+        checkEmail:"Prüfen Sie Ihr Postfach, um die Registrierung zu bestätigen.", configurationError:"Supabase ist nicht konfiguriert. Fügen Sie Projekt-URL und anon-Schlüssel in den Code ein.",
+        passwordError:"Das Passwort muss mindestens 8 Zeichen lang sein.", invalidCredentials:"E-Mail-Adresse oder Passwort ist falsch.",
+        emailAlreadyRegistered:"Diese E-Mail-Adresse wird bereits verwendet.", genericAuthError:"Ein Fehler ist aufgetreten. Prüfen Sie Ihre Eingaben und versuchen Sie es erneut.",
+        signOutError:"Die Abmeldung ist fehlgeschlagen. Bitte versuchen Sie es erneut.", googleError:"Google-Anmeldung konnte nicht gestartet werden. Prüfen Sie die OAuth-Einstellungen in Supabase.",
+        loading:"Bitte warten…", accountCreated:"Konto erstellt. Prüfen Sie Ihre E-Mail zur Bestätigung."
       },
       it: {
         menu:"Menu", profile:"Profilo", myServices:"I miei servizi", clientServices:"Servizio clienti", contact:"Contatti", settings:"Impostazioni",
@@ -694,8 +749,8 @@
         heroEyebrow:"Supporto · Formazione · Assistenza", heroTitle:"Amplia le tue conoscenze sui mercati crypto.",
         heroCopy:"MMS TRADE offre risorse formative e un servizio clienti dedicato per aiutarti a comprendere meglio gli investimenti in criptovalute, il trading e il mining.",
         exploreServices:"Scopri i servizi", contactSupport:"Contatta il servizio clienti", profileTitle:"La tua area clienti",
-        profileIntro:"Consulta le tue informazioni e accedi ai servizi MMS TRADE.", visitor:"Visitatore", demoMode:"Anteprima — accesso da configurare",
-        servicesTitle:"I miei servizi", servicesIntro:"Scegli un argomento per scoprire la nostra formazione e il nostro supporto.",
+        profileIntro:"Consulta le tue informazioni e accedi ai servizi MMS TRADE.", visitor:"Cliente", servicesTitle:"I miei servizi",
+        servicesIntro:"Scegli un argomento per scoprire la nostra formazione e il nostro supporto.",
         investmentTitle:"Investimenti crypto", investmentCopy:"Contenuti formativi per comprendere gli asset digitali, le piattaforme e i rischi associati.",
         tradingTitle:"Formazione sul trading", tradingCopy:"Introduzione all’analisi dei mercati, agli ordini e ai principi di gestione del rischio.",
         miningTitle:"Formazione sul mining", miningCopy:"Scopri attrezzature, costi energetici e fattori da valutare prima di un progetto di mining.",
@@ -709,10 +764,12 @@
         footerDisclaimer:"Le cripto-attività comportano rischi. Nessun rendimento è garantito.",
         authWelcome:"Benvenuto", authDescription:"Accedi per entrare nella tua area clienti.", login:"Accedi",
         createAccount:"Crea un account", switchPrompt:"Non hai ancora un account?", haveAccount:"Hai già un account?",
-        authNotice:"Anteprima dell’interfaccia: l’accesso tramite e-mail e Google deve essere collegato a un servizio di autenticazione prima del lancio.",
-        demoAuth:"L’autenticazione non è ancora attiva. Configura un servizio sicuro prima di creare account.",
-        googleSetup:"L’accesso Google deve essere configurato con un provider di autenticazione.",
-        passwordError:"La password deve contenere almeno 8 caratteri."
+        google:"Continua con Google", resetPassword:"Password dimenticata?", passwordResetSent:"Se esiste un account con questo indirizzo, verrà inviata un’e-mail per reimpostare la password.",
+        checkEmail:"Controlla la tua casella e-mail per confermare la registrazione.", configurationError:"Supabase non è configurato. Inserisci nel codice l’URL del progetto e la chiave anon.",
+        passwordError:"La password deve contenere almeno 8 caratteri.", invalidCredentials:"Indirizzo e-mail o password non corretti.",
+        emailAlreadyRegistered:"Questo indirizzo e-mail è già registrato.", genericAuthError:"Si è verificato un errore. Controlla i dati e riprova.",
+        signOutError:"Impossibile uscire. Riprova.", googleError:"Impossibile avviare l’accesso Google. Controlla la configurazione OAuth in Supabase.",
+        loading:"Attendi…", accountCreated:"Account creato. Controlla la tua e-mail per confermare la registrazione."
       }
     };
 
@@ -729,12 +786,37 @@
     const switchPrompt = document.getElementById("switchPrompt");
     const switchModeButton = document.getElementById("switchMode");
     const signOutButton = document.getElementById("signOut");
+    const googleButton = document.getElementById("googleButton");
+    const profileName = document.getElementById("profileName");
+    const profileEmail = document.getElementById("profileEmail");
+    const avatar = document.getElementById("avatar");
 
     let currentLanguage = localStorage.getItem("mms-language") || "fr";
     let creatingAccount = false;
+    let currentUser = null;
 
     function t(key) {
       return (translations[currentLanguage] || translations.fr)[key] || translations.fr[key] || key;
+    }
+
+    function setMessage(message, type = "error") {
+      formMessage.textContent = message;
+      formMessage.classList.toggle("success", type === "success");
+    }
+
+    function getAuthErrorMessage(error) {
+      const message = String(error?.message || "").toLowerCase();
+
+      if (message.includes("already registered") || message.includes("already been registered")) {
+        return t("emailAlreadyRegistered");
+      }
+      if (message.includes("invalid login credentials") || message.includes("invalid credentials")) {
+        return t("invalidCredentials");
+      }
+      if (message.includes("password") && message.includes("at least")) {
+        return t("passwordError");
+      }
+      return error?.message || t("genericAuthError");
     }
 
     function applyLanguage(language) {
@@ -749,6 +831,7 @@
       });
 
       updateAuthLabels();
+      updateProfile(currentUser);
     }
 
     function updateAuthLabels() {
@@ -757,23 +840,51 @@
       authSubmit.textContent = creatingAccount ? t("createAccount") : t("login");
       switchPrompt.textContent = creatingAccount ? t("haveAccount") : t("switchPrompt");
       switchModeButton.textContent = creatingAccount ? t("login") : t("createAccount");
-      signOutButton.textContent = t("signIn");
+      googleButton.textContent = t("google");
+      signOutButton.textContent = currentUser ? t("signOut") : t("signIn");
+
+      const passwordInput = document.getElementById("password");
+      passwordInput.autocomplete = creatingAccount ? "new-password" : "current-password";
     }
 
     function showAuth() {
       authScreen.classList.remove("hidden");
       siteContent.classList.add("hidden");
       signOutButton.textContent = t("signIn");
-      authScreen.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
     function showSite() {
       authScreen.classList.add("hidden");
       siteContent.classList.remove("hidden");
-      signOutButton.textContent = t("signIn");
+      signOutButton.textContent = t("signOut");
     }
 
-    languageSelect.addEventListener("change", (event) => applyLanguage(event.target.value));
+    function updateProfile(user) {
+      if (!user) return;
+
+      const name =
+        user.user_metadata?.full_name ||
+        user.user_metadata?.name ||
+        user.email?.split("@")[0] ||
+        t("visitor");
+
+      profileName.textContent = name;
+      profileEmail.textContent = user.email || "";
+      avatar.textContent = name.trim().charAt(0).toUpperCase() || "M";
+    }
+
+    function setLoading(isLoading) {
+      authSubmit.disabled = isLoading;
+      googleButton.disabled = isLoading;
+      switchModeButton.disabled = isLoading;
+      authSubmit.textContent = isLoading
+        ? t("loading")
+        : (creatingAccount ? t("createAccount") : t("login"));
+    }
+
+    languageSelect.addEventListener("change", (event) => {
+      applyLanguage(event.target.value);
+    });
 
     menuToggle.addEventListener("click", () => {
       const open = sidebar.classList.toggle("open");
@@ -791,34 +902,144 @@
 
     switchModeButton.addEventListener("click", () => {
       creatingAccount = !creatingAccount;
-      formMessage.textContent = "";
+      setMessage("");
+      authForm.reset();
       updateAuthLabels();
     });
 
-    signOutButton.addEventListener("click", () => {
-      showAuth();
-      creatingAccount = false;
-      updateAuthLabels();
-    });
-
-    authForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const password = document.getElementById("password").value;
-
-      if (password.length < 8) {
-        formMessage.textContent = t("passwordError");
+    signOutButton.addEventListener("click", async () => {
+      if (!currentUser) {
+        creatingAccount = false;
+        setMessage("");
+        updateAuthLabels();
+        showAuth();
+        window.scrollTo({ top: 0, behavior: "smooth" });
         return;
       }
 
-      formMessage.textContent = t("demoAuth");
+      if (!supabase) {
+        setMessage(t("configurationError"));
+        return;
+      }
+
+      signOutButton.disabled = true;
+      const { error } = await supabase.auth.signOut();
+      signOutButton.disabled = false;
+
+      if (error) {
+        setMessage(getAuthErrorMessage(error));
+      }
     });
 
-    document.getElementById("googleButton").addEventListener("click", () => {
-      formMessage.textContent = t("googleSetup");
+    authForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      setMessage("");
+
+      if (!supabase) {
+        setMessage(t("configurationError"));
+        return;
+      }
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (password.length < 8) {
+        setMessage(t("passwordError"));
+        return;
+      }
+
+      setLoading(true);
+
+      try {
+        if (creatingAccount) {
+          const { data, error } = await supabase.auth.signUp({
+            email,
+            password,
+            options: {
+              emailRedirectTo: window.location.origin
+            }
+          });
+
+          if (error) throw error;
+
+          if (data.session) {
+            setMessage(t("accountCreated"), "success");
+          } else {
+            setMessage(t("checkEmail"), "success");
+          }
+        } else {
+          const { error } = await supabase.auth.signInWithPassword({
+            email,
+            password
+          });
+
+          if (error) throw error;
+        }
+      } catch (error) {
+        setMessage(getAuthErrorMessage(error));
+      } finally {
+        setLoading(false);
+      }
+    });
+
+    googleButton.addEventListener("click", async () => {
+      setMessage("");
+
+      if (!supabase) {
+        setMessage(t("configurationError"));
+        return;
+      }
+
+      googleButton.disabled = true;
+
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo: window.location.origin
+        }
+      });
+
+      if (error) {
+        setMessage(getAuthErrorMessage(error));
+        googleButton.disabled = false;
+      }
     });
 
     applyLanguage(currentLanguage);
-    showSite();
+
+    if (!supabase) {
+      showAuth();
+      setMessage(t("configurationError"));
+    } else {
+      const { data, error } = await supabase.auth.getSession();
+
+      if (error) {
+        showAuth();
+        setMessage(getAuthErrorMessage(error));
+      } else {
+        currentUser = data.session?.user || null;
+        if (currentUser) {
+          updateProfile(currentUser);
+          showSite();
+        } else {
+          showAuth();
+        }
+      }
+
+      supabase.auth.onAuthStateChange((_event, session) => {
+        currentUser = session?.user || null;
+
+        if (currentUser) {
+          updateProfile(currentUser);
+          showSite();
+          setMessage("");
+        } else {
+          showAuth();
+        }
+
+        updateAuthLabels();
+      });
+    }
   </script>
 </body>
 </html>
